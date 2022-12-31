@@ -40,8 +40,7 @@ public class LoginControl implements ActionListener{
       public LoginControl() throws SQLException
     {
         loginView = new LoginView();
-        Session session = HibernateUtil.getSessionFactoryOracle().openSession();
-        
+        Session session = HibernateUtil.getSessionFactory().openSession();
         loginView.setLocationRelativeTo(null);
         loginView.setVisible(true);
         loginView.EXIT_button.addActionListener(this);
@@ -102,7 +101,7 @@ public class LoginControl implements ActionListener{
    public boolean connect()
 {
     boolean variable =false;
-    sessionOK =  HibernateUtil.getSessionFactoryOracle().isOpen();
+    sessionOK =  HibernateUtil.getSessionFactory().isOpen();
     variable = true;
     String text = "connection is OK";
     dialogWindow.Menssage("info", text);

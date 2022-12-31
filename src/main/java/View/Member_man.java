@@ -32,6 +32,7 @@ public class Member_man extends javax.swing.JFrame {
         delete_button = new javax.swing.JButton();
         new_button = new javax.swing.JButton();
         back_button = new javax.swing.JButton();
+        member_ac_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Member Management");
@@ -68,6 +69,9 @@ public class Member_man extends javax.swing.JFrame {
         back_button.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         back_button.setText("Back");
 
+        member_ac_button.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+        member_ac_button.setText("Member Activities");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +83,8 @@ public class Member_man extends javax.swing.JFrame {
                 .addComponent(delete_button)
                 .addGap(180, 180, 180)
                 .addComponent(back_button)
+                .addGap(40, 40, 40)
+                .addComponent(member_ac_button)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -99,7 +105,8 @@ public class Member_man extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Update_button)
                     .addComponent(delete_button)
-                    .addComponent(back_button))
+                    .addComponent(back_button)
+                    .addComponent(member_ac_button))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -121,6 +128,7 @@ public class Member_man extends javax.swing.JFrame {
     public javax.swing.JButton delete_button;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jtablemember;
+    public javax.swing.JButton member_ac_button;
     public javax.swing.JButton new_button;
     // End of variables declaration//GEN-END:variables
 }

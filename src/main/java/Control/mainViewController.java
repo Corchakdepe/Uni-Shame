@@ -22,8 +22,6 @@ import View.activityView;
 import View.newtrainerview;
 import static java.awt.PageAttributes.MediaType.A;
 
-
-
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -93,13 +91,14 @@ class mainViewController implements ActionListener {
         mainView.members_menu.addActionListener(this);
         mainView.trainer_menu.addActionListener(this);
         mainView.trainer_man_menu.addActionListener(this);
-        mainView.activities_menu.addActionListener(this);
-        mainView.activities_men_menu.addActionListener(this);
+        
+   
         
         memberView.Update_button.addActionListener(this);
         memberView.delete_button.addActionListener(this);
         memberView.new_button.addActionListener(this);
         memberView.back_button.addActionListener(this);
+        memberView.member_ac_button.addActionListener(this);
         
         trainerView.Update_button.addActionListener(this);
         trainerView.delete_button.addActionListener(this);
@@ -107,14 +106,15 @@ class mainViewController implements ActionListener {
         
         newview.Insert_button.addActionListener(this);
         newview.close_button.addActionListener(this);
-        
-        
-        
         newview.code_field.setEditable(false);
-        trainernewview.code_field.setEditable(false);
+        
+        
+        
+        
         
         trainernewview.close_button.addActionListener(this);
         trainernewview.Insert_button.addActionListener(this);
+        trainernewview.code_field.setEditable(false);
         
         activityview.Search_button.addActionListener(this);
         activityview.return_button.addActionListener(this);
@@ -175,7 +175,7 @@ class mainViewController implements ActionListener {
     switch(e.getActionCommand())
     {
         
-        case "Members Management":
+        case "Members Management": 
             mainView.dispose();
             memberView.setLocationRelativeTo(null);
             memberView.setVisible(true);
@@ -184,17 +184,11 @@ class mainViewController implements ActionListener {
             table_model.filltableMember(memberdao.listAllmembers());
             
             newview.code_field.setText("S0"+table_model.countmember(member));
-            //System.out.println(memberdao.testquery(member));
+           
             break;
 
-        case "Activities Management":
-                mainView.dispose();
-                activityview.setLocationRelativeTo(null);
-                activityview.setVisible(true);
-                table_model.setuptableActivity(activityview);
-                table_model.filltableActivity(activitydao.listAllactivities());
-                
-            break;
+        
+            
         case "Trainers Management":
              mainView.dispose();
              trainerView.setLocationRelativeTo(null);
@@ -210,14 +204,22 @@ class mainViewController implements ActionListener {
           
              
              break;
-             
-            case "Back":
+            
+        case "Member Activities":
+            
+           
+            activityview.setLocationRelativeTo(null);
+            activityview.setVisible(true);
+         
+        break;
+            
+            case "Back": //close Member Window and re open main View
                 memberView.dispose();
                 mainView.setLocationRelativeTo(null);
                 mainView.setVisible(true);
             break;  
             
-            case "back":
+            case "back": //close Trainer Window and re open main View //to be fixed
                 
                 trainerView.dispose();
                 mainView.setLocationRelativeTo(null);
@@ -227,7 +229,7 @@ class mainViewController implements ActionListener {
             
             
             
-            case "Update":
+            case "Update": //update member window
                 Transaction tra = session.beginTransaction();
                 System.out.println("Update test");
                 table_model.cleartablemember();  
@@ -236,7 +238,7 @@ class mainViewController implements ActionListener {
             break;
             
             
-            case "update":
+            case "update": //update trainer window
                 Transaction tr = session.beginTransaction();
                 table_model.cleartabletrainer();
                 table_model.filltableTrainer(trainerdao.listAlltrainer());
@@ -244,14 +246,14 @@ class mainViewController implements ActionListener {
                 System.out.println("Update test"); 
             break;
             
-            case "New":
+            case "New": // new member
                 newview.setLocationRelativeTo(null);
                 newview.setVisible(true);
                 newview.code_field.setText(table_model.countmember(member));
                 System.out.println("Running New");
                 break;
                 
-            case "new":
+            case "new": // new trainer
                 
                 trainernewview.setLocationRelativeTo(null);
                 trainernewview.setVisible(true);
@@ -260,7 +262,7 @@ class mainViewController implements ActionListener {
                  
                           break;
                 
-                 case "Insert":
+                 case "Insert": //insert a new member 
                   
                   Transaction trrr=null;
         
@@ -283,7 +285,7 @@ class mainViewController implements ActionListener {
                 System.out.println("Insert Running");
                 break;
                 
-                 case "insert":
+                 case "insert": // insert a new trainer
                      
                     Transaction trr = null;
                      
@@ -300,60 +302,57 @@ class mainViewController implements ActionListener {
             }
         }
                       
-                              //String tCod, String tName, String tIdnumber,String tPhonenumber,String tEmail, String tDate,String tNick)
+                              
                       
                      break;
 
                 
                  case "Delete":
-                    Transaction trra = null;
-                    int p = memberviewmousecontroll(evt);
-                    String s = Integer.toString(p);
+                  
+                     
+                     int p = memberView.jtablemember.getSelectedRow();
+                     String s = (String) table_model.modeltableMember.getValueAt(p, 0);
+                     
+                    if (p == -1) {
+                       JOptionPane.showMessageDialog(null, "Select a Row first");
+                    } else 
+                        
+                        try {
+                            memberdao.deleteMember(s);
+                            table_model.cleartablemember();//
+            table_model.setuptableMember(memberView);
+            table_model.filltableMember(memberdao.listAllmembers());
+                            
+     } catch (Exception ex) {
+         Logger.getLogger(mainViewController.class.getName()).log(Level.SEVERE, null, ex);
+     }
+                     
+                  
+                      
+                   
                     
-        {
-            try {
-                
-                trra = session.beginTransaction();
-               // session.delete(s);
-              memberdao.deleteMember(p);
-                trra.commit();
-              //  memberdao.deleteMember(s);
-                
-                
-            } catch (Exception ex) {
-                Logger.getLogger(mainViewController.class.getName()).log(Level.SEVERE, null, ex);
-                trra.rollback();
-            }finally
-            {
-                table_model.cleartablemember();
-                table_model.filltableMember(memberdao.listAllmembers());
-            }
-        }
-
-                 break;
-                 
+                    break;
+               
+            
                  case "delete":
                      
-                    Transaction r = null; 
-                    int ps= trainerviewmousecontroll(evt);
+                    int t = trainerView.jtabletrainer.getSelectedRow(); 
+                    String ts = (String) table_model.modeltableTrainer.getValueAt(t, 0);
                     
+                    if(t == -1)  {JOptionPane.showMessageDialog(null, "Select a Row first");
+                    } else 
                      
+                        try {
+                            trainerdao.deleteTrainer(ts);
+                            table_model.cleartabletrainer();
+                            table_model.setuptableTrainer(trainerView);
+                            table_model.filltableTrainer(trainerdao.listAlltrainer());
+     } catch (Exception ex) {
+         Logger.getLogger(mainViewController.class.getName()).log(Level.SEVERE, null, ex);
+     }
+                 
                       
-        {
-            try {
-                r = session.beginTransaction();
-                trainerdao.deleteTrainer(ps);
-                r.commit();
-              } catch (Exception ex) {
-                if(ex!=null)
-                r.rollback();
-                Logger.getLogger(mainViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }finally
-                    {
-                         table_model.cleartabletrainer();
-                table_model.filltableTrainer(trainerdao.listAlltrainer());
-                    }
-        }      
+       
                      break;
                  case "Close":
                      newview.dispose();                   
@@ -367,15 +366,7 @@ class mainViewController implements ActionListener {
                      mainView.setVisible(true);
                  break;
                  case "Search":
-                        Member1 member = session.get(Member1.class, "S003");
-                        Activity activity = session.get(Activity.class,"AC03");
-                        activity.getMember1Set().add(member);
-                        member.getActivitySet().add(activity);
-                        
-                        
-                        
-                        
-                        
+                     
                  break;
                  case "erase": 
                      

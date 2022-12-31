@@ -40,11 +40,18 @@ public class trainerDAO {
        
       
     
-   public void deleteTrainer(int codTrainer) throws Exception
+   public void deleteTrainer(String codTrainer) throws Exception
     {
-        if(codTrainer>=10){
-        session.createQuery("DELETE FROM Member1 m WHERE M_NUM='"+"M0"+codTrainer+"'");}
-        else   { session.createQuery("DELETE FROM Member1 m WHERE M_NUM='"+"M00"+codTrainer+"'");}
+       
+           Transaction tra = session.beginTransaction();
+   
+        
+        
+    
+       trainer = session.get(Trainer.class, codTrainer);
+       session.delete(trainer);
+       tra.commit();
+        
     }
     
 }

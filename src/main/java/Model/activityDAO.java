@@ -21,9 +21,9 @@ public class activityDAO {
         session=ses;
     }
     
-    public List<Activity> listAllactivities(){
-     List<Activity> alist = session.createNamedQuery("Activity.findAll").list();
-        return alist;
+    public List<Member1> listAllmembers(){
+     List<Member1> memlist = session.createQuery("SELECT * FROM MEMBER").list();
+        return memlist;
     }
     
 }

@@ -27,14 +27,21 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         barra_box = new javax.swing.JMenuBar();
         members_menu = new javax.swing.JMenu();
         member_man_menu = new javax.swing.JMenuItem();
         trainer_menu = new javax.swing.JMenu();
         trainer_man_menu = new javax.swing.JMenuItem();
-        activities_menu = new javax.swing.JMenu();
-        activities_men_menu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GymBro Management");
@@ -65,19 +72,6 @@ public class MainView extends javax.swing.JFrame {
         trainer_menu.add(trainer_man_menu);
 
         barra_box.add(trainer_menu);
-
-        activities_menu.setText("Activities");
-        activities_menu.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
-
-        activities_men_menu.setText("Activities Management");
-        activities_men_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                activities_men_menuActionPerformed(evt);
-            }
-        });
-        activities_menu.add(activities_men_menu);
-
-        barra_box.add(activities_menu);
         barra_box.add(jMenu4);
 
         setJMenuBar(barra_box);
@@ -104,10 +98,6 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_trainer_man_menuActionPerformed
 
-    private void activities_men_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activities_men_menuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_activities_men_menuActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -116,10 +106,11 @@ public class MainView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem activities_men_menu;
-    public javax.swing.JMenu activities_menu;
     public javax.swing.JMenuBar barra_box;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem member_man_menu;
     public javax.swing.JMenu members_menu;
     public javax.swing.JMenuItem trainer_man_menu;

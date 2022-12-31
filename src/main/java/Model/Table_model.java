@@ -44,29 +44,6 @@ public class Table_model {
            return false;
        }
    }; 
-     public DefaultTableModel modeltableActivity = new DefaultTableModel()
-     {
-         public boolean iscelleditable(int row, int column)
-         {
-             return false;
-         }
-     };
-       public void setuptableActivity(activityView activityview)
-   {
-     
-      
-       activityview.activity_table.setModel(modeltableActivity);
-       
-       String[] columnNames = {"ID", "NUM"};
-       modeltableActivity.setColumnIdentifiers(columnNames);
-       activityview.activity_table.getTableHeader().setResizingAllowed(false);
-       activityview.activity_table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-       
-       
-     activityview.activity_table.getColumnModel().getColumn(0).setPreferredWidth(40);
-       activityview.activity_table.getColumnModel().getColumn(1).setPreferredWidth(240);
-         
-   }
      
       public void setuptableMember(Member_man memberView)
    {
@@ -187,27 +164,6 @@ public class Table_model {
          }
      }
        
-        
-          public void filltableActivity(List<Model.Activity> lactivity)
-     {
-         
-         
-         Object[] row = new Object[2];
-         int numRows = lactivity.size();
-         for (int i = 0; i < numRows; i++) {
-         
-             row[0] = lactivity.get(i).getAId();
-             row[1] = lactivity.get(i).getMember1Set();
-              
-                   
-                    
-                    modeltableActivity.addRow(row);
-                    
-            
-         }
-     }
-       
-        
        public void cleartablemember()
        {
            for(int i=modeltableMember.getRowCount() - 1; i>=0; i--)

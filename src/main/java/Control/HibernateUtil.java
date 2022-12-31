@@ -13,8 +13,6 @@ import org.hibernate.service.ServiceRegistry;
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
-    //private static final SessionFactory sessionFactoryM = buildSessionFactorymaria();
-    
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -33,32 +31,10 @@ public class HibernateUtil {
         }
     }
     
-    /*private static SessionFactory buildSessionFactorymaria() {
-        try {
-            // Create the ServiceRegistry from hibernate.cfg.xml
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .configure("hibernate.cfg_m.xml").build();
-           
-            // Create a metadata sources using the specified service registry.
-            Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-            
-            return metadata.getSessionFactoryBuilder().build();
-
-        } catch (Throwable ex) {
-            System.err.println("build SeesionFactory failed :" + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }*/
     
-    
-    public static SessionFactory getSessionFactoryOracle() {
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-    
-    /*public static SessionFactory getSessionFactoryMaria()
-    {
-        return sessionFactoryM;
-    }*/
 
     public static void close() {
         if ((sessionFactory!=null) && (sessionFactory.isClosed()==false)) {
@@ -66,7 +42,5 @@ public class HibernateUtil {
         sessionFactory.close();
         }
     }
-    
-     
 
 }

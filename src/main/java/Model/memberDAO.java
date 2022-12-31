@@ -44,7 +44,6 @@ public class memberDAO {
      List<Member1> memlist = session.getNamedQuery("Member1.findAll").list();
         return memlist;
     }
-    
 
     public void insertMember(Member1 member)throws Exception
     {
@@ -80,19 +79,19 @@ public class memberDAO {
          return string;
        }
      
-   public void deleteMember(int codMember) throws Exception
+   public void deleteMember(String codMember) throws Exception
     {
-       // Transaction tra = session.beginTransaction();
-        //member = session.get(Member1.class, codMember);
-       // session.delete(member);
+       Transaction tra = session.beginTransaction();
+        member = session.get(Member1.class, codMember);
+        session.delete(member);
         
       //  session.createQuery("DELETE FROM Member1 m WHERE M_NUM='"+"S00"+codMember+"'");
-        if(codMember>=10){
-        session.createSQLQuery("DELETE FROM MEMBER WHERE M_NUM='"+"S0"+codMember+"'");}
-        
-        else {
-        session.createSQLQuery("DELETE FROM MEMBER WHERE M_NUM='"+"S00"+codMember+"'");
-       // tra.commit();}}
-                
-                }}   
+        //session.createSQLQuery("DELETE FROM MEMBER WHERE M_NUM='"+"S00"+codMember+"'");
+       tra.commit();
+    }
+    
+    
+      
+   
+      
 }

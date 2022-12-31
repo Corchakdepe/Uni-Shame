@@ -27,27 +27,20 @@ public class thisIsHibernate {
     
     public static void main(String[] args) throws SQLException {
         
-       LoginControl cLogin = new LoginControl();
+        LoginControl cLogin = new LoginControl();
         
-        
-       /* 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tr = session.beginTransaction();
-         
+       /* Transaction tr = session.beginTransaction();
+      // Session session = HibernateUtil.getSessionFactory().openSession();
         
         Member1 member = session.get(Member1.class, "S003");
         Activity activity = session.get(Activity.class,"AC03");
         activity.getMember1Set().add(member);
         member.getActivitySet().add(activity);
         
-        
-        
         session.save(member);
         tr.commit();
         System.out.println(member.getActivitySet());
-          */
-       
-    
+                     */ 
        
         
 
