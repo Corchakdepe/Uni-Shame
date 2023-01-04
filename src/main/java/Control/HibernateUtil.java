@@ -18,7 +18,7 @@ public class HibernateUtil {
         try {
             // Create the ServiceRegistry from hibernate.cfg.xml
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .configure("hibernate.cfg.xml").build();
+                    .configure("oracle.cfg.xml").build();
            
             // Create a metadata sources using the specified service registry.
             Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
@@ -37,6 +37,37 @@ public class HibernateUtil {
     }
 
     public static void close() {
+        if ((sessionFactory!=null) && (sessionFactory.isClosed()==false)) {
+             sessionFactory.close();
+        sessionFactory.close();
+        }
+    }
+    
+       private static final SessionFactory sessionFactorymaria = buildSessionFactory();
+
+    private static SessionFactory buildSessionFactorymaria() {
+        try {
+            // Create the ServiceRegistry from hibernate.cfg.xml
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                    .configure("maria.cfg.xml").build();
+           
+            // Create a metadata sources using the specified service registry.
+            Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
+            
+            return metadata.getSessionFactoryBuilder().build();
+
+        } catch (Throwable ex) {
+            System.err.println("build SeesionFactory failed :" + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    
+    
+    public static SessionFactory getSessionFactorymaria() {
+        return sessionFactory;
+    }
+
+    public static void closemaria() {
         if ((sessionFactory!=null) && (sessionFactory.isClosed()==false)) {
              sessionFactory.close();
         sessionFactory.close();

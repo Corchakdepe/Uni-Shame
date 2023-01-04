@@ -23,7 +23,7 @@ import org.hibernate.query.Query;
 public class memberDAO {
 
     
-    Session session=null;
+    Session session;
     newView newview = null;
     Member1 member=null;
     private MainView mainView = null;
@@ -31,7 +31,7 @@ public class memberDAO {
     private Trainer_man trainerView=null;
     Transaction tr = null;
     public memberDAO(Session ses) {
-        session=ses;
+        this.session=ses;
         mainView = new MainView();
       memberView = new Member_man();
       trainerView = new Trainer_man();

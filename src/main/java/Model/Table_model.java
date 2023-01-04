@@ -36,6 +36,7 @@ public class Table_model {
        }
        
    }; 
+    
      
      public DefaultTableModel modeltableTrainer = new DefaultTableModel()
    {
@@ -45,6 +46,13 @@ public class Table_model {
        }
    }; 
      
+     public DefaultTableModel modeltableActivity = new DefaultTableModel()
+     {
+         public boolean iscelleditable(int row, int column)
+         {
+             return false;
+         }
+     };
       public void setuptableMember(Member_man memberView)
    {
      
@@ -84,6 +92,23 @@ public class Table_model {
             trainerView.jtabletrainer.getColumnModel().getColumn(5).setPreferredWidth(110);
             trainerView.jtabletrainer.getColumnModel().getColumn(6).setPreferredWidth(70);  
    }
+      
+       public void setuptableActivity(activityView activityview)
+       {
+           activityview.activity_table.setModel(modeltableActivity);
+           String[] columnNames = {"id","name","price","trainer","description"};
+           
+           modeltableActivity.setColumnIdentifiers(columnNames);
+           activityview.activity_table.getTableHeader().setResizingAllowed(false);
+           activityview.activity_table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+           
+           activityview.activity_table.getColumnModel().getColumn(0).setPreferredWidth(40);
+           activityview.activity_table.getColumnModel().getColumn(1).setPreferredWidth(40);
+           activityview.activity_table.getColumnModel().getColumn(2).setPreferredWidth(40);
+           activityview.activity_table.getColumnModel().getColumn(3).setPreferredWidth(40);
+           activityview.activity_table.getColumnModel().getColumn(4).setPreferredWidth(40);
+           
+       }
      
       
        public void filltableMember(List<Model.Member1> lmember)
@@ -108,6 +133,8 @@ public class Table_model {
             
          }
      }
+       
+       
            public String countmember(Member1 member)
      {
          
@@ -163,7 +190,27 @@ public class Table_model {
             
          }
      }
+        
+        public void filltableActivity(List<Model.Activity> lactivity)
+        {
+            Object[] row = new Object[5];
+            
+            int numRows=lactivity.size();
+            for(int i = 0;i<numRows;i++)
+            {
+                row[0]=lactivity.get(i).getAId();
+                row[1]=lactivity.get(i).getAName();
+                row[2]=lactivity.get(i).getAPrice();
+                row[3]=lactivity.get(i).getATrainerincharge();
+                row[4]=lactivity.get(i).getADescription();
+               
+                modeltableActivity.addRow(row);
+                
+            }
+        }
        
+        
+        
        public void cleartablemember()
        {
            for(int i=modeltableMember.getRowCount() - 1; i>=0; i--)
@@ -180,6 +227,14 @@ public class Table_model {
            }
        }
        
+       
+       public void cleartableactivity()
+       {
+           for(int i=modeltableActivity.getRowCount() - 1;i>0;i--)
+           {
+               modeltableActivity.removeRow(i);
+           }
+       }
        
        
        

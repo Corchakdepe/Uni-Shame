@@ -15,13 +15,13 @@ import org.hibernate.query.Query;
  */
 public class trainerDAO {
 
-    Session session=null;
+    Session session;
     Trainer trainer = null;
     
     
     public trainerDAO(Session ses) {
         
-        session=ses;
+        this.session=ses;
     }
     
     public List<Trainer> listAlltrainer()

@@ -69,6 +69,13 @@ public class activityView extends javax.swing.JDialog {
             }
         });
 
+        activity_box.setText("AC01");
+        activity_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activity_boxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +91,7 @@ public class activityView extends javax.swing.JDialog {
                             .addComponent(return_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(activity_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(activity_box, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Search_button)))
                 .addContainerGap())
@@ -116,6 +123,10 @@ public class activityView extends javax.swing.JDialog {
     private void return_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_return_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_return_buttonActionPerformed
+
+    private void activity_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activity_boxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activity_boxActionPerformed
 
     /**
      * @param args the command line arguments

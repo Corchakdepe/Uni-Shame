@@ -57,7 +57,6 @@ class mainViewController implements ActionListener {
     private newView newview = null;
     private newtrainerview trainernewview = null;
     private Table_model table_model = null;
-    private Query q = null;
     private memberDAO memberdao=null;
     private trainerDAO trainerdao=null;
     private activityDAO activitydao = null;
@@ -126,31 +125,10 @@ class mainViewController implements ActionListener {
     }
     
        
-    private int memberviewmousecontroll(MouseEvent evt)
-    {
-        int row = memberView.jtablemember.getSelectedRow();
-         if(row != -1) 
-            {
-               // remove the selected row from the table model
-               table_model.modeltableMember.removeRow(row);
-               JOptionPane.showMessageDialog(null, "Deleted successfully");
-               
-      
-    }   return row;}
+    
    
     
-    private int trainerviewmousecontroll(MouseEvent evt)
-    {
-        int row = trainerView.jtabletrainer.getSelectedRow();
-         if(row != -1) 
-            {
-               // remove the selected row from the table model
-               table_model.modeltableTrainer.removeRow(row);
-               JOptionPane.showMessageDialog(null, "Deleted successfully");
-               
-      
-    }   return row;
-}
+    
       
 
      
@@ -161,17 +139,8 @@ class mainViewController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        
      
-     memberView.jtablemember.addMouseListener(new MouseAdapter() {
-       // public void mouseClicked(MouseEvent evt)
-      //  {
-       //     memberviewmousecontroll(evt);
-      //  }
-        public void mouseEntered(MouseEvent evt)
-        {
-             memberviewmousecontroll(evt);
-        }
-        });
-          
+    
+       
     switch(e.getActionCommand())
     {
         
@@ -207,9 +176,12 @@ class mainViewController implements ActionListener {
             
         case "Member Activities":
             
-           
+            mainView.dispose();
             activityview.setLocationRelativeTo(null);
             activityview.setVisible(true);
+            table_model.cleartableactivity();
+            table_model.setuptableActivity(activityview);
+            table_model.filltableActivity(activitydao.listAllactivities());
          
         break;
             
@@ -366,10 +338,16 @@ class mainViewController implements ActionListener {
                      mainView.setVisible(true);
                  break;
                  case "Search":
+                     table_model.cleartableactivity();
+                     table_model.setuptableActivity(activityview);
+                     String ac = activityview.activity_box.getText();
                      
+                     table_model.filltableActivity(activitydao.listAllMembersFromActivity(ac));
+                    
+                     System.out.println(activityview.activity_box.getText());
                  break;
                  case "erase": 
-                     
+                     System.out.println("test");
                  break;   
                   
 

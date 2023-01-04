@@ -4,8 +4,11 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -14,16 +17,28 @@ import org.hibernate.Session;
 public class activityDAO {
 
     
-    Session session=null;
+    Session session;
     
     public activityDAO(Session ses) {
         
-        session=ses;
+        this.session=ses;
     }
     
-    public List<Member1> listAllmembers(){
-     List<Member1> memlist = session.createQuery("SELECT * FROM MEMBER").list();
-        return memlist;
+    public List<Activity> listAllactivities(){
+     List<Activity> alist = session.getNamedQuery("Activity.findAll").list();
+        return alist;
     }
     
+    
+ 
+    public List<Activity> listAllMembersFromActivity(String A_ID) {
+        Transaction tr = session.beginTransaction();
+        Query query = session.createNativeQuery("SELECT * FROM PERFORMS p INNER JOIN \"MEMBER\" m ON p.P_NUM = m.M_NUM WHERE p.P_ID = \'" + A_ID + "\'");
+        
+        List<Activity> list = query.list();
+
+        tr.commit();
+        
+        return list;
+    }
 }
