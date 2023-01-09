@@ -207,7 +207,11 @@
             <StringItem index="1" value="MariaDB"/>
           </StringArray>
         </Property>
+        <Property name="actionCommand" type="java.lang.String" value="Oracle,&#xa;MariaDB"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboboxActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

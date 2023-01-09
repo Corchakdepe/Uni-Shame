@@ -35,7 +35,6 @@ public class MainView extends javax.swing.JFrame {
         member_man_menu = new javax.swing.JMenuItem();
         trainer_menu = new javax.swing.JMenu();
         trainer_man_menu = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -72,7 +71,6 @@ public class MainView extends javax.swing.JFrame {
         trainer_menu.add(trainer_man_menu);
 
         barra_box.add(trainer_menu);
-        barra_box.add(jMenu4);
 
         setJMenuBar(barra_box);
 
@@ -109,7 +107,6 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JMenuBar barra_box;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem member_man_menu;
     public javax.swing.JMenu members_menu;

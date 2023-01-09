@@ -80,6 +80,12 @@ public class LoginView extends javax.swing.JFrame {
 
         combobox.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oracle", "MariaDB" }));
+        combobox.setActionCommand("Oracle,\nMariaDB");
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
 
         portbox.setFont(portbox.getFont());
         portbox.setText("1521");
@@ -170,6 +176,10 @@ public class LoginView extends javax.swing.JFrame {
     private void EXIT_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXIT_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EXIT_buttonActionPerformed
+
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxActionPerformed
 
     /**
      * @param args the command line arguments

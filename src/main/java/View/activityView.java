@@ -13,8 +13,8 @@ public class activityView extends javax.swing.JDialog {
     /**
      * Creates new form activityView
      */
-    public activityView(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public activityView() {
+       
         initComponents();
     }
 
@@ -30,9 +30,11 @@ public class activityView extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         activity_table = new javax.swing.JTable();
         return_button = new javax.swing.JButton();
-        erase_button = new javax.swing.JButton();
         Search_button = new javax.swing.JButton();
         activity_box = new javax.swing.JTextField();
+        add_ac_b = new javax.swing.JButton();
+        add_m_ac = new javax.swing.JButton();
+        delete_ac = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Activity");
@@ -51,15 +53,12 @@ public class activityView extends javax.swing.JDialog {
         jScrollPane1.setViewportView(activity_table);
 
         return_button.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
-        return_button.setText("return");
+        return_button.setText("update table");
         return_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 return_buttonActionPerformed(evt);
             }
         });
-
-        erase_button.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
-        erase_button.setText("erase");
 
         Search_button.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         Search_button.setText("Search");
@@ -76,6 +75,20 @@ public class activityView extends javax.swing.JDialog {
             }
         });
 
+        add_ac_b.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+        add_ac_b.setText("add activity");
+        add_ac_b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_ac_bActionPerformed(evt);
+            }
+        });
+
+        add_m_ac.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+        add_m_ac.setText("add member to ac");
+
+        delete_ac.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+        delete_ac.setText("delete activity");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,10 +98,12 @@ public class activityView extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(erase_button, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                            .addComponent(return_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(return_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(add_ac_b, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(add_m_ac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(delete_ac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(activity_box, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,8 +121,12 @@ public class activityView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(erase_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(delete_ac)
+                        .addGap(18, 18, 18)
+                        .addComponent(add_m_ac)
+                        .addGap(18, 18, 18)
+                        .addComponent(add_ac_b)
+                        .addGap(18, 18, 18)
                         .addComponent(return_button))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -128,6 +147,10 @@ public class activityView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_activity_boxActionPerformed
 
+    private void add_ac_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ac_bActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_ac_bActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,7 +160,9 @@ public class activityView extends javax.swing.JDialog {
     public javax.swing.JButton Search_button;
     public javax.swing.JTextField activity_box;
     public javax.swing.JTable activity_table;
-    public javax.swing.JButton erase_button;
+    public javax.swing.JButton add_ac_b;
+    public javax.swing.JButton add_m_ac;
+    public javax.swing.JButton delete_ac;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton return_button;
     // End of variables declaration//GEN-END:variables

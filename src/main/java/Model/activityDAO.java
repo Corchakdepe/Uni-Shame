@@ -18,6 +18,7 @@ public class activityDAO {
 
     
     Session session;
+    Activity activity = null;
     
     public activityDAO(Session ses) {
         
@@ -31,14 +32,40 @@ public class activityDAO {
     
     
  
-    public List<Activity> listAllMembersFromActivity(String A_ID) {
+   public ArrayList<Object[]> listAllMembersFromActivity(String A_ID) {
         Transaction tr = session.beginTransaction();
-        Query query = session.createNativeQuery("SELECT * FROM PERFORMS p INNER JOIN \"MEMBER\" m ON p.P_NUM = m.M_NUM WHERE p.P_ID = \'" + A_ID + "\'");
-        
-        List<Activity> list = query.list();
+        Query query = session.createNativeQuery("SELECT m.M_NUM, m.M_NAME, m.M_EMAILMEMBER FROM PERFORMS p INNER JOIN \"MEMBER\" m ON p.P_NUM = m.M_NUM WHERE p.P_ID = \'" + A_ID + "\'");
+
+        ArrayList<Object[]> list = (ArrayList<Object[]>) query.list();
 
         tr.commit();
         
         return list;
     }
+   
+   public void deleteActivity(String codAc) throws Exception
+    {
+       Transaction tra = session.beginTransaction();
+        activity = session.get(Activity.class, codAc);
+        session.delete(activity);
+        
+      
+       tra.commit();
+    }
+   
+   
+   public void addMemberToActivity(String ac_id, String m_id) {
+        Transaction tr = session.beginTransaction();
+        
+        session.createNativeQuery("INSERT INTO PERFORMS VALUES (\'" + m_id + "\', \'" + ac_id + "\')").executeUpdate();
+
+        tr.commit();
+    }
+   
+    public void addactivity(Activity activity) {
+        Transaction tr = session.beginTransaction();
+        session.save(activity);
+        tr.commit();
+    }
+   
 }

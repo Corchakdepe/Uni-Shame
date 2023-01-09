@@ -47,9 +47,9 @@ public class memberDAO {
 
     public void insertMember(Member1 member)throws Exception
     {
-       // Transaction tra = session.beginTransaction();
+       Transaction tra = session.beginTransaction();
         session.save(member);
-      //  tra.commit();
+        tra.commit();
         
     }
      public String lastid(Member1 member)

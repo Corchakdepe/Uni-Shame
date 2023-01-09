@@ -14,6 +14,7 @@ public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+    
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the ServiceRegistry from hibernate.cfg.xml

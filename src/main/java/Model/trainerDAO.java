@@ -32,9 +32,9 @@ public class trainerDAO {
     
        public void insertTrainer(Trainer trainer)throws Exception
     {
-        //Transaction tra = session.beginTransaction();
+        Transaction tra = session.beginTransaction();
         session.save(trainer);
-       // tra.commit();
+        tra.commit();
         
     }
        

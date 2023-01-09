@@ -14,6 +14,8 @@ import static java.awt.SystemColor.text;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,7 +27,7 @@ import static oracle.sql.NUMBER.e;
  *
  * @author ageudepetris
  */
-public class LoginControl implements ActionListener{
+public class LoginControl implements ActionListener, ItemListener{
     
       
       private boolean sessionOK = false;
@@ -108,4 +110,27 @@ public class LoginControl implements ActionListener{
     return sessionOK;
    
 }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+    
+          switch (loginView.combobox.getSelectedItem().toString()) {
+            case "Oracle":
+                loginView.ip.setText("172.17.20.39");
+                loginView.portbox.setText("1521");
+                loginView.db_name_box.setText("ETSI");
+                loginView.user_box.setText("ISDD_004");
+                loginView.pass_box.setText("102030");
+                break;
+
+            case "MariaDB":
+                loginView.ip.setText("172.18.1.241");
+                loginView.portbox.setText("3306");
+                loginView.db_name_box.setText("ISDD_004");
+                loginView.user_box.setText("ISDD_004");
+                loginView.pass_box.setText("ISDD_004");
+                break;
+        }
+    
+    }
 }

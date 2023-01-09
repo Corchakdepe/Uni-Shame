@@ -109,9 +109,54 @@ public class Table_model {
            activityview.activity_table.getColumnModel().getColumn(4).setPreferredWidth(40);
            
        }
+       
+       
+        public void setuptableMemberinac(Member_man memberView)
+   {
+     
+       memberView.jtablemember.setModel(modeltableMember);
+       
+       String[] columnNames = {"ID", "Name", "DNI","Phone","Birth Date","email", "start date","cat"};
+       modeltableMember.setColumnIdentifiers(columnNames);
+       memberView.jtablemember.getTableHeader().setResizingAllowed(false);
+       memberView.jtablemember.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+       
+       
+       memberView.jtablemember.getColumnModel().getColumn(0).setPreferredWidth(40);
+        memberView.jtablemember.getColumnModel().getColumn(1).setPreferredWidth(240);
+         memberView.jtablemember.getColumnModel().getColumn(2).setPreferredWidth(70);
+          memberView.jtablemember.getColumnModel().getColumn(3).setPreferredWidth(70);
+           memberView.jtablemember.getColumnModel().getColumn(4).setPreferredWidth(70);
+            memberView.jtablemember.getColumnModel().getColumn(5).setPreferredWidth(240);
+             memberView.jtablemember.getColumnModel().getColumn(6).setPreferredWidth(1);
+             memberView.jtablemember.getColumnModel().getColumn(7).setPreferredWidth(1);
+   }
      
       
        public void filltableMember(List<Model.Member1> lmember)
+     {
+         
+         
+         Object[] row = new Object[8];
+         int numRows = lmember.size();
+         for (int i = 0; i < numRows; i++) {
+         
+             row[0] = lmember.get(i).getMNum();
+              row[1] = lmember.get(i).getMName();
+               row[2] = lmember.get(i).getMId();
+                row[3] = lmember.get(i).getMPhone();
+                 row[4] = lmember.get(i).getMBirhtdate();
+                  row[5] = lmember.get(i).getMEmailmember();
+                   row[6] = lmember.get(i).getMStartingdatemember();
+                    row[7] = lmember.get(i).getMCathegorymember();
+                    
+                    modeltableMember.addRow(row);
+                    
+            
+         }
+     }
+       
+       public void filltableMemberin(List<Model.Member1> lmember)
      {
          
          
@@ -159,6 +204,22 @@ public class Table_model {
             int i;
             
             i = modeltableTrainer.getRowCount();
+            
+            i++;
+            
+            String p = Integer.toString(i);
+
+            return p;
+         
+     }
+             
+             public String countActivity(Activity activity)
+     {
+         
+         
+            int i;
+            
+            i = modeltableActivity.getRowCount();
             
             i++;
             
