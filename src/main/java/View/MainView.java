@@ -35,6 +35,10 @@ public class MainView extends javax.swing.JFrame {
         member_man_menu = new javax.swing.JMenuItem();
         trainer_menu = new javax.swing.JMenu();
         trainer_man_menu = new javax.swing.JMenuItem();
+        activity_menu = new javax.swing.JMenu();
+        activities_menu = new javax.swing.JMenuItem();
+        member_fee_menu = new javax.swing.JMenu();
+        member_fee = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -72,6 +76,32 @@ public class MainView extends javax.swing.JFrame {
 
         barra_box.add(trainer_menu);
 
+        activity_menu.setText("Activities");
+        activity_menu.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+
+        activities_menu.setText("Member Activities");
+        activities_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activities_menuActionPerformed(evt);
+            }
+        });
+        activity_menu.add(activities_menu);
+
+        barra_box.add(activity_menu);
+
+        member_fee_menu.setText("Defense");
+        member_fee_menu.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+
+        member_fee.setText("Member fee");
+        member_fee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                member_feeActionPerformed(evt);
+            }
+        });
+        member_fee_menu.add(member_fee);
+
+        barra_box.add(member_fee_menu);
+
         setJMenuBar(barra_box);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,6 +126,14 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_trainer_man_menuActionPerformed
 
+    private void activities_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activities_menuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activities_menuActionPerformed
+
+    private void member_feeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_member_feeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_member_feeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -104,10 +142,14 @@ public class MainView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenuItem activities_menu;
+    public javax.swing.JMenu activity_menu;
     public javax.swing.JMenuBar barra_box;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    public javax.swing.JMenuItem member_fee;
+    public javax.swing.JMenu member_fee_menu;
     public javax.swing.JMenuItem member_man_menu;
     public javax.swing.JMenu members_menu;
     public javax.swing.JMenuItem trainer_man_menu;

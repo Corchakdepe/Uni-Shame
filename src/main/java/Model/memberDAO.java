@@ -52,32 +52,8 @@ public class memberDAO {
         tra.commit();
         
     }
-     public String lastid(Member1 member)
-       {
-        String string = null;
-        
-        session.createQuery("SELECT m FROM Member1 m WHERE m.mNum = :mNum").getQueryString();
-       
-      
-    //  @NamedQuery(name = "Member1.findByMNum", query = "SELECT m FROM Member1 m WHERE m.mNum = :mNum"),
-    //WHERE ID = (
-  // SELECT MAX(ID) FROM Table)
-        
-         return string;
-       }
-     public String testquery(Member1 member)
-       {
-        String string = null;
-        
-        session.createQuery("SELECT p FROM Performs p").getQueryString();
-       
-      
-    //  @NamedQuery(name = "Member1.findByMNum", query = "SELECT m FROM Member1 m WHERE m.mNum = :mNum"),
-    //WHERE ID = (
-  // SELECT MAX(ID) FROM Table)
-        
-         return string;
-       }
+    
+     
      
    public void deleteMember(String codMember) throws Exception
     {

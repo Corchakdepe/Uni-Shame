@@ -96,7 +96,7 @@ public class Table_model {
        public void setuptableActivity(activityView activityview)
        {
            activityview.activity_table.setModel(modeltableActivity);
-           String[] columnNames = {"id","name","price","trainer","description"};
+           String[] columnNames = {"id","name","price","description"};
            
            modeltableActivity.setColumnIdentifiers(columnNames);
            activityview.activity_table.getTableHeader().setResizingAllowed(false);
@@ -105,31 +105,26 @@ public class Table_model {
            activityview.activity_table.getColumnModel().getColumn(0).setPreferredWidth(40);
            activityview.activity_table.getColumnModel().getColumn(1).setPreferredWidth(40);
            activityview.activity_table.getColumnModel().getColumn(2).setPreferredWidth(40);
-           activityview.activity_table.getColumnModel().getColumn(3).setPreferredWidth(40);
-           activityview.activity_table.getColumnModel().getColumn(4).setPreferredWidth(40);
+           activityview.activity_table.getColumnModel().getColumn(3).setPreferredWidth(240);
+         //  activityview.activity_table.getColumnModel().getColumn(4).setPreferredWidth(40);
            
        }
        
        
-        public void setuptableMemberinac(Member_man memberView)
+        public void setuptableMemberinac(activityView activityView)
    {
      
-       memberView.jtablemember.setModel(modeltableMember);
+       activityView.activity_table.setModel(modeltableMember);
        
-       String[] columnNames = {"ID", "Name", "DNI","Phone","Birth Date","email", "start date","cat"};
+       String[] columnNames = {"Name","email"};
        modeltableMember.setColumnIdentifiers(columnNames);
-       memberView.jtablemember.getTableHeader().setResizingAllowed(false);
-       memberView.jtablemember.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+       activityView.activity_table.getTableHeader().setResizingAllowed(false);
+       activityView.activity_table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
        
        
-       memberView.jtablemember.getColumnModel().getColumn(0).setPreferredWidth(40);
-        memberView.jtablemember.getColumnModel().getColumn(1).setPreferredWidth(240);
-         memberView.jtablemember.getColumnModel().getColumn(2).setPreferredWidth(70);
-          memberView.jtablemember.getColumnModel().getColumn(3).setPreferredWidth(70);
-           memberView.jtablemember.getColumnModel().getColumn(4).setPreferredWidth(70);
-            memberView.jtablemember.getColumnModel().getColumn(5).setPreferredWidth(240);
-             memberView.jtablemember.getColumnModel().getColumn(6).setPreferredWidth(1);
-             memberView.jtablemember.getColumnModel().getColumn(7).setPreferredWidth(1);
+       activityView.activity_table.getColumnModel().getColumn(0).setPreferredWidth(40);
+        activityView.activity_table.getColumnModel().getColumn(1).setPreferredWidth(240);
+        
    }
      
       
@@ -160,18 +155,15 @@ public class Table_model {
      {
          
          
-         Object[] row = new Object[8];
+         Object[] row = new Object[2];
          int numRows = lmember.size();
          for (int i = 0; i < numRows; i++) {
          
-             row[0] = lmember.get(i).getMNum();
-              row[1] = lmember.get(i).getMName();
-               row[2] = lmember.get(i).getMId();
-                row[3] = lmember.get(i).getMPhone();
-                 row[4] = lmember.get(i).getMBirhtdate();
-                  row[5] = lmember.get(i).getMEmailmember();
-                   row[6] = lmember.get(i).getMStartingdatemember();
-                    row[7] = lmember.get(i).getMCathegorymember();
+           
+              row[0] = lmember.get(i).getMName();
+               
+                  row[1] = lmember.get(i).getMEmailmember();
+                   
                     
                     modeltableMember.addRow(row);
                     
@@ -262,8 +254,8 @@ public class Table_model {
                 row[0]=lactivity.get(i).getAId();
                 row[1]=lactivity.get(i).getAName();
                 row[2]=lactivity.get(i).getAPrice();
-                row[3]=lactivity.get(i).getATrainerincharge();
-                row[4]=lactivity.get(i).getADescription();
+             //   row[3]=lactivity.get(i).getATrainerincharge();
+                row[3]=lactivity.get(i).getADescription();
                
                 modeltableActivity.addRow(row);
                 

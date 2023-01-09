@@ -39,6 +39,7 @@ public class activityView extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Activity");
 
+        activity_table.setForeground(new java.awt.Color(51, 204, 0));
         activity_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -68,7 +69,6 @@ public class activityView extends javax.swing.JDialog {
             }
         });
 
-        activity_box.setText("AC01");
         activity_box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 activity_boxActionPerformed(evt);
@@ -85,6 +85,11 @@ public class activityView extends javax.swing.JDialog {
 
         add_m_ac.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         add_m_ac.setText("add member to ac");
+        add_m_ac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_m_acActionPerformed(evt);
+            }
+        });
 
         delete_ac.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         delete_ac.setText("delete activity");
@@ -150,6 +155,10 @@ public class activityView extends javax.swing.JDialog {
     private void add_ac_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ac_bActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_add_ac_bActionPerformed
+
+    private void add_m_acActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_m_acActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_m_acActionPerformed
 
     /**
      * @param args the command line arguments

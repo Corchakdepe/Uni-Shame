@@ -65,9 +65,19 @@ public class LoginView extends javax.swing.JFrame {
 
         ip.setFont(ip.getFont());
         ip.setText("172.17.20.39");
+        ip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ipActionPerformed(evt);
+            }
+        });
 
         db_name_box.setFont(db_name_box.getFont());
         db_name_box.setText("ETSI");
+        db_name_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                db_name_boxActionPerformed(evt);
+            }
+        });
 
         user_box.setFont(user_box.getFont());
         user_box.setText("ISDD_004");
@@ -180,6 +190,14 @@ public class LoginView extends javax.swing.JFrame {
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboboxActionPerformed
+
+    private void ipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ipActionPerformed
+
+    private void db_name_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_db_name_boxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_db_name_boxActionPerformed
 
     /**
      * @param args the command line arguments

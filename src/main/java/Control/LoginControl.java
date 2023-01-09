@@ -36,25 +36,26 @@ public class LoginControl implements ActionListener, ItemListener{
       private DialogWindow dialogWindow = null;
       private MainView mainView = null;
       private mainViewController mainViewcontroller = null;
-      
+      private Session session;
       
       
       public LoginControl() throws SQLException
     {
         loginView = new LoginView();
-        Session session = HibernateUtil.getSessionFactory().openSession();
+       
         loginView.setLocationRelativeTo(null);
         loginView.setVisible(true);
-        loginView.EXIT_button.addActionListener(this);
-        loginView.connect_button.addActionListener(this);
-        dialogWindow= new DialogWindow();
-        mainView = new MainView();
-        mainViewcontroller = new mainViewController(session);
         
-        mainView.member_man_menu.addActionListener(mainViewcontroller);
+        dialogWindow= new DialogWindow();
+        
+       this.addListeners();
+
+       /*mainView.member_man_menu.addActionListener(mainViewcontroller);
         mainView.trainer_menu.addActionListener(mainViewcontroller);
         mainView.trainer_menu.addActionListener(mainViewcontroller);
-        mainView.trainer_man_menu.addActionListener(mainViewcontroller);
+        mainView.trainer_man_menu.addActionListener(mainViewcontroller);*/
+        
+       
         
     }
 
@@ -67,16 +68,17 @@ public class LoginControl implements ActionListener, ItemListener{
                 
                 
                
+                     session = connectdb();
                      
-                      sessionOK = connect();
-                       
+                     
                        
                           
-                        if(sessionOK)
+                        if(session!=null)
                         {
-                           
-                           
-                           smainView();
+                           // connect();
+                           mainViewcontroller = new mainViewController(session);
+                          //mainView = new MainView();
+                          // smainView();
                            loginView.dispose();
                         }
                         
@@ -92,8 +94,19 @@ public class LoginControl implements ActionListener, ItemListener{
     
     
     }
+   
+   
+   private void addListeners()
+   {
+       
+        
+        loginView.EXIT_button.addActionListener(this);
+        loginView.connect_button.addActionListener(this);
+        loginView.combobox.addItemListener(this);
+   }
    public void smainView() 
 {
+    
     mainView.setLocationRelativeTo(null);
     mainView.setVisible(true);
     
@@ -102,21 +115,33 @@ public class LoginControl implements ActionListener, ItemListener{
    
    public boolean connect()
 {
-    boolean variable =false;
     sessionOK =  HibernateUtil.getSessionFactory().isOpen();
-    variable = true;
     String text = "connection is OK";
     dialogWindow.Menssage("info", text);
-    return sessionOK;
-   
+    return sessionOK;  
 }
 
+   
+   public Session connectdb()
+   {
+       String box = loginView.combobox.getSelectedItem().toString();
+            if  (box=="Oracle")
+               
+              session = HibernateUtil.getSessionFactory().openSession();
+
+            if(box=="MariaDB") 
+               
+              session = HibernateUtil.getSessionFactorymaria().openSession();
+        
+     return session;
+   }
+   
     @Override
     public void itemStateChanged(ItemEvent e) {
-    
-          switch (loginView.combobox.getSelectedItem().toString()) {
+        String combobox = loginView.combobox.getSelectedItem().toString();
+      switch (combobox) {
             case "Oracle":
-                loginView.ip.setText("172.17.20.39");
+                 loginView.ip.setText("172.17.20.39");
                 loginView.portbox.setText("1521");
                 loginView.db_name_box.setText("ETSI");
                 loginView.user_box.setText("ISDD_004");
@@ -124,13 +149,13 @@ public class LoginControl implements ActionListener, ItemListener{
                 break;
 
             case "MariaDB":
-                loginView.ip.setText("172.18.1.241");
+                 loginView.ip.setText("172.18.1.241");
                 loginView.portbox.setText("3306");
                 loginView.db_name_box.setText("ISDD_004");
                 loginView.user_box.setText("ISDD_004");
                 loginView.pass_box.setText("ISDD_004");
                 break;
         }
-    
+          
     }
 }

@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import View.Trainer_man;
 import View.activityView;
+import View.memberfee;
 import View.newactivity;
 import View.newmemberactivity;
 import View.newtrainerview;
@@ -54,6 +55,7 @@ class mainViewController implements ActionListener {
     private MainView mainView = null;
     private Member_man memberView= null;
     private Trainer_man trainerView=null;
+    private memberfee memberfee= null;
     Session  session;
     private Member1 member = null;
     private Activity activity = null;
@@ -75,7 +77,7 @@ class mainViewController implements ActionListener {
     mainViewController(Session ses) {
         
      
-      session=ses;
+        session=ses;
         loginView = new LoginView();
         mainView = new MainView();
         memberView = new Member_man();
@@ -88,24 +90,29 @@ class mainViewController implements ActionListener {
         trainernewview = new newtrainerview(trainerView,true);
         newActivity = new newactivity(activityview,true);
         newmemberactivity = new newmemberactivity(activityview,true);
+        memberfee = new memberfee();
         memberdao = new memberDAO(ses);
         trainerdao = new trainerDAO(ses);
         activitydao = new activityDAO(ses);
         
          
+        mainView.setLocationRelativeTo(null);
+        mainView.setVisible(true);
         //mainmenu buttons
         mainView.member_man_menu.addActionListener(this);
         mainView.members_menu.addActionListener(this);
         mainView.trainer_menu.addActionListener(this);
         mainView.trainer_man_menu.addActionListener(this);
-        //mainView.activities_menu.addActionListener(this);//not working im sorry
-   
+        mainView.activities_menu.addActionListener(this);
+        mainView.activity_menu.addActionListener(this);
+        mainView.member_fee.addActionListener(this);
+        mainView.member_fee_menu.addActionListener(this);
           //member window buttons
         memberView.Update_button.addActionListener(this);
         memberView.delete_button.addActionListener(this);
         memberView.new_button.addActionListener(this);
         memberView.back_button.addActionListener(this);
-        memberView.member_ac_button.addActionListener(this);
+       
         //trainer window buttons
         trainerView.Update_button.addActionListener(this);
         trainerView.delete_button.addActionListener(this);
@@ -135,6 +142,12 @@ class mainViewController implements ActionListener {
         newActivity.add_ac_button.addActionListener(this);
         newActivity.id_field.setEditable(false);
         newmemberactivity.add_to_ac_m_button.addActionListener(this);
+        
+        
+        
+        //member fee
+        
+        memberfee.calculate_button.addActionListener(this);
         
       
     }
@@ -194,12 +207,18 @@ class mainViewController implements ActionListener {
             memberView.dispose();
             activityview.setLocationRelativeTo(null);
             activityview.setVisible(true);
-            table_model.cleartableactivity();
-            table_model.setuptableActivity(activityview);
-            table_model.filltableActivity(activitydao.listAllactivities());
-            newActivity.id_field.setText("AC"+table_model.countActivity(activity));
+            table_model.cleartableactivity();  
+                     table_model.setuptableActivity(activityview);
+                     table_model.filltableActivity(activitydao.listAllactivities());
+                     newActivity.id_field.setText("AC"+table_model.countActivity(activity));
+           
+            
          
-        break;
+        break; 
+        
+        
+        
+        
         
       
         
@@ -269,6 +288,8 @@ class mainViewController implements ActionListener {
                      
                      newActivity.setLocationRelativeTo(null);
                      newActivity.setVisible(true);
+                       
+                     
                      System.out.println("test");
                     
                     // public Activity(String aId, String aName, String aDescription, BigInteger aPrice)
@@ -281,6 +302,7 @@ class mainViewController implements ActionListener {
                     System.out.println("test");
                     newmemberactivity.setLocationRelativeTo(null);
                     newmemberactivity.setVisible(true);
+                    
                     break;
                  
                  
@@ -427,10 +449,11 @@ class mainViewController implements ActionListener {
                  
                  case "Search": //look for a member in a activity (does not work well)
                      table_model.cleartableactivity();
-                     table_model.setuptableActivity(activityview);
+                     table_model.setuptableMemberinac(activityview);
                      String ac = activityview.activity_box.getText();
                   List a =   activitydao.listAllMembersFromActivity(ac);
-                     table_model.filltableActivity(a);
+                  table_model.cleartableactivity();
+                     table_model.filltableMemberin(a);
                     
                      System.out.println(activityview.activity_box.getText());
                  break;
@@ -439,8 +462,32 @@ class mainViewController implements ActionListener {
                 
                 
                 
-                  
+              ///////////////////////    
+                case "Member fee":
+                    
+                    
+                    memberfee.setLocationRelativeTo(null);
+                    memberfee.setVisible(true);
+                    System.out.println("test");
+            break;
+            
                 
+                case "calculate":
+                    System.out.println("calculating");
+                    
+                    int size;
+                    size = activitydao.listAllactivitiesfrom_member(memberfee.code_field.getText()).size();
+                    String i_size;
+                    i_size = Integer.toString(size);
+                   
+                    memberfee.ac_num.setText(i_size);
+                    
+                    
+                    
+                    memberfee.cost_field.setText(activitydao.pricing(i_size).toString());
+                    
+                    System.out.println();
+                    break;
                 
     }
       
