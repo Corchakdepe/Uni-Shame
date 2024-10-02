@@ -1,5 +1,5 @@
-# Uni-Shame
-I java and cry
+# DDSI project
+
 
 This is a small java project.
 We first used JDBC to makes requests to the university DB.
